@@ -1,6 +1,9 @@
 package com.mizzio.android.criminalintent;
 
+import android.view.ViewGroup;
+
 import java.util.Date;
+import java.util.Random;
 import java.util.UUID;
 
 public class Crime {
@@ -8,10 +11,26 @@ public class Crime {
     private String mTitle;
     private Date mDate;
     private boolean mSolved;
+    private boolean mRequiresPolice;
 
     public Crime(){
         mId = UUID.randomUUID();
         mDate = new Date();
+        Random random = new Random();
+        if (random.nextInt(2) == 0){
+            mRequiresPolice = false;
+        }
+        else{
+            mRequiresPolice = true;
+        }
+    }
+
+    public boolean isPoliceRequired() {
+        return mRequiresPolice;
+    }
+
+    public void setPoliceRequired(boolean policeRequired) {
+        this.mRequiresPolice = policeRequired;
     }
 
     public UUID getId() {
