@@ -2,6 +2,7 @@ package com.mizzio.android.criminalintent;
 
 import android.view.ViewGroup;
 
+import java.text.DateFormat;
 import java.util.Date;
 import java.util.Random;
 import java.util.UUID;
