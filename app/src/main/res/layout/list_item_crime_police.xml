@@ -7,31 +7,33 @@
     android:padding="8dp">
 
     <LinearLayout
-        android:layout_weight="1"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/crime_title"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Crime Title"/>
+            android:text="Crime Title" />
 
         <TextView
             android:id="@+id/crime_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Crime Date"/>
-
+            android:text="Crime Date" />
     </LinearLayout>
-
 
     <Button
         android:id="@+id/police_button"
+        style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
         android:layout_height="wrap_content"
         android:layout_width="0dp"
         android:layout_gravity="right"
         android:layout_weight="1"
         android:text="@string/call_police" />
+
+
+
 </LinearLayout>

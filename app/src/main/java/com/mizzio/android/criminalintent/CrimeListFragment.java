@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,6 +44,7 @@ public class CrimeListFragment extends Fragment {
 
         private TextView mTitleTextView;
         private TextView mDateTextView;
+        private ImageView mSolvedImageView;
         private Crime mCrime;
 
         public CrimeHolder(View itemView){
@@ -52,12 +54,14 @@ public class CrimeListFragment extends Fragment {
             itemView.setOnClickListener(this);
             mTitleTextView = itemView.findViewById(R.id.crime_title);
             mDateTextView = itemView.findViewById(R.id.crime_date);
+            //mSolvedImageView = itemView.findViewById(R.id.crime_solved);
         }
 
         public void bind(Crime crime){
             mCrime = crime;
             mTitleTextView.setText(mCrime.getTitle());
             mDateTextView.setText(mCrime.getDate().toString());
+
             if (this.getItemViewType() == 1){
                 mCallPolice = itemView.findViewById(R.id.police_button);
                 mCallPolice.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +71,7 @@ public class CrimeListFragment extends Fragment {
                         }
                     });
                 }
+            //mSolvedImageView.setVisibility(crime.isSolved() ? View.VISIBLE : View.GONE);
 
         }
 
