@@ -4,6 +4,8 @@ package com.mizzio.android.criminalintent;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.view.ViewPager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -22,11 +24,14 @@ import static android.widget.CompoundButton.*;
 public class CrimeFragment extends Fragment {
 
     private static final String ARG_CRIME_ID = "crime_id";
+    private  static final String DIALOG_DATE = "Dialogdate";
 
     private Crime mCrime;
     private EditText mTitleField;
     private Button mDateButton;
     private CheckBox mSolvedCheckBox;
+    private Button mButtonStart;
+    private ViewPager mViewPager;
 
     public static CrimeFragment newInstance(UUID crimeId){
         Bundle args = new Bundle();
@@ -41,10 +46,12 @@ public class CrimeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        //mCrime = new Crime();
-        //UUID crimeId = (UUID) getActivity().getIntent().getSerializableExtra(CrimeActivity.EXTRA_CRIME_ID);
+
         UUID crimeId = (UUID) getArguments().getSerializable(ARG_CRIME_ID);
         mCrime = CrimeLab.get(getActivity()).getCrime(crimeId);
+
+
+
     }
 
     @Override
@@ -72,7 +79,14 @@ public class CrimeFragment extends Fragment {
 
         mDateButton = v.findViewById(R.id.crime_date);
         mDateButton.setText(mCrime.getDate().toString());
-        mDateButton.setEnabled(false);
+        mDateButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                FragmentManager manager = getFragmentManager();
+                DatePickerFragment dialog = DatePickerFragment.newinstance(mCrime.getDate());
+                dialog.show(manager, DIALOG_DATE);
+            }
+        });
 
         mSolvedCheckBox = v.findViewById(R.id.crime_solved);
         mSolvedCheckBox.setChecked(mCrime.isSolved());
@@ -83,8 +97,11 @@ public class CrimeFragment extends Fragment {
             }
         });
 
+        mViewPager = v.findViewById(R.id.crime_view_pager);
+
         return v;
     }
+
 
     public void returnResult(){
         getActivity().setResult(Activity.RESULT_OK, null);

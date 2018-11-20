@@ -98,9 +98,8 @@ public class CrimeListFragment extends Fragment {
 
         @Override
         public void onClick(View view){
-            //Toast.makeText(getActivity(),mCrime.getTitle()+"clicked!", Toast.LENGTH_SHORT).show();
-            //Intent intent = new Intent(getActivity(),CrimeActivity.class);
-            Intent intent = CrimeActivity.newIntent(getActivity(), mCrime.getId());
+
+            Intent intent = CrimePagerActivity.newIntent(getActivity(),mCrime.getId());
             startActivityForResult(intent, REQUEST_CODE);
         }
 
@@ -150,8 +149,8 @@ public class CrimeListFragment extends Fragment {
         }
 
         @Override
-        public int getItemViewType(int positiion){
-            boolean isPoliceNeeded = mCrimes.get(positiion).isPoliceRequired();
+        public int getItemViewType(int position){
+            boolean isPoliceNeeded = mCrimes.get(position).isPoliceRequired();
             if (isPoliceNeeded){
                 return 1;
             }
