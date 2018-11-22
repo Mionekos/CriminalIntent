@@ -15,15 +15,18 @@ public class Crime {
     private boolean mRequiresPolice;
 
     public Crime(){
-        mId = UUID.randomUUID();
+        this(UUID.randomUUID());
+//        Random random = new Random();
+//        if (random.nextInt(2) == 0){
+//            mRequiresPolice = false;
+//        }
+//        else{
+//            mRequiresPolice = true;
+//        }
+    }
+    public Crime (UUID id){
+        mId = id;
         mDate = new Date();
-        Random random = new Random();
-        if (random.nextInt(2) == 0){
-            mRequiresPolice = false;
-        }
-        else{
-            mRequiresPolice = true;
-        }
     }
 
     public boolean isPoliceRequired() {
