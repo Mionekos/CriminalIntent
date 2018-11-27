@@ -45,6 +45,7 @@ public class CrimeListFragment extends Fragment {
 
     public interface Callbacks{
         void onCrimeSelected(Crime crime);
+        void onCrimeUpdated(Crime crime);
     }
 
     @Override

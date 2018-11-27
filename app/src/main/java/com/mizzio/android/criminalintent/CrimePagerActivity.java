@@ -23,7 +23,7 @@ public class CrimePagerActivity extends AppCompatActivity implements CrimeFragme
     private Button mButtonStart;
 
     @Override
-    public void onCrimeUpdated(Crime crime){
+    public void  onCrimeUpdated(Crime crime){
 
     }
 

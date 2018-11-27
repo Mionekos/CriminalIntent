@@ -58,7 +58,7 @@ public class CrimeFragment extends Fragment {
     private Button mSuspectButton;
     private ImageButton mPhotoButton;
     private ImageView mPhotoView;
-    private CrimeListFragment.Callbacks mCallbacks;
+    private Callbacks mCallbacks;
 
     private CheckBox mSolvedCheckBox;
 
@@ -81,7 +81,7 @@ public class CrimeFragment extends Fragment {
     @Override
     public void onAttach(Context context){
         super.onAttach(context);
-        mCallbacks = (CrimeListFragment.Callbacks) context;
+        mCallbacks = (Callbacks) context;
     }
 
     @Override
@@ -253,7 +253,8 @@ public class CrimeFragment extends Fragment {
 
     private void  updateCrime(){
         CrimeLab.get(getActivity()).updateCrime(mCrime);
-        mCallbacks.onCrimeSelected(mCrime);
+        mCallbacks.onCrimeUpdated(mCrime);
+
     }
 
     private void updateDate() {
